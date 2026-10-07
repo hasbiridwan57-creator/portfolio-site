@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hasbi Ridwan — Automation, Finance &amp; Web Development</title>
+<meta name="description" content="Automation engineer and web developer. n8n orchestration, Python fuzzy matching, FastAPI webhooks, and modern web projects.">
+<meta name="theme-color" content="#0F172A">
+<link rel="canonical" href="https://hasbiportofolio.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hasbi Ridwan — Automation, Finance &amp; Web Development">
+<meta property="og:description" content="n8n orchestration · Python fuzzy matching · FastAPI webhooks · Telegram + Notion pipelines">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F172A'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2322C55E' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="intro-overlay" aria-hidden="true">
+  <canvas id="intro-stars" aria-hidden="true"></canvas>
+  <canvas id="intro-lightning" aria-hidden="true"></canvas>
+  <canvas id="intro-particles" aria-hidden="true"></canvas>
+  <div class="intro-progress">
+    <div class="intro-subtitle">Loading <span id="intro-pct">0</span>%</div>
+    <div class="intro-bar"><i id="intro-bar-fill"></i></div>
+  </div>
+</div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="orb orb-a" aria-hidden="true"></div>
+<div class="orb orb-b" aria-hidden="true"></div>
+<div class="orb orb-c" aria-hidden="true"></div>
+
+<a class="skip" href="#work">Skip to work</a>
+
+<nav class="nav-pill" aria-label="Section navigation">
+  <a href="#top" class="nav-link is-active">Home</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#work" class="nav-link">Portofolio</a>
+  <a href="#contact" class="nav-link">Contact</a>
+</nav>
+
+<main>
+
+<header id="top" class="hero">
+  <div class="hero-grid">
+    <!-- KOLOM KIRI -->
+    <div class="hero-copy reveal">
+      <p class="hi">Hi, I'm</p>
+      <h1 class="hero-name">Hasbi<br>Ridwan</h1>
+      <p class="role">Automation · Finance · Web Development</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://instagram.com/hasbiridwann" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/hasbiridwan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn btn-primary" href="mailto:hasbiridwann277@gmail.com">Mail</a>
+        <a class="btn btn-primary" href="assets/pdf/Resume_Hasbi.pdf" target="_blank" rel="noopener">View Resume</a>
+      </div>
+    </div>
+    <!-- KOLOM TENGAH -->
+    <div class="hero-visual" style="position: relative; z-index: 2;">
+      <div class="profile-wrap" id="profile-wrap">
+        <canvas id="orbit" aria-hidden="true" style="position: absolute; z-index: -1;"></canvas>
+        <div class="profile-glow" aria-hidden="true"></div>
+        <div class="profile-stack" id="profile-stack" style="position: relative; width: 100%; height: 100%; border-radius: 28px; overflow: hidden;">
+          <img id="profile-photo" class="profile-img" src="assets/img/profile-cut.jpg" alt="Hasbi Ridwan" width="360" height="450"
+               style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <svg class="profile-tx" viewBox="0 0 360 450" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#22c55e" />
+              <stop offset="50%" stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#a855f7" />
+            </linearGradient>
+            <filter id="pktGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="3" result="b" />
+              <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
+          <rect x="2" y="2" width="356" height="446" rx="28" ry="28" fill="none" stroke="rgba(148,163,184,.25)" stroke-width="1.5" />
+          <rect class="tx-flow" x="2" y="2" width="356" height="446" rx="28" ry="28" fill="none" stroke="url(#profileGrad)" stroke-width="2" stroke-dasharray="10 14" opacity=".8" />
+          <rect class="tx-packet" x="2" y="2" width="356" height="446" rx="28" ry="28" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-dasharray="22 1580" filter="url(#pktGlow)" />
+        </svg>
+      </div>
+    </div>
+    <!-- KOLOM KANAN -->
+    <div class="hero-text-side reveal">
+      <p class="bio-text" id="typed-bio"></p>
+      <a class="btn btn-outline" href="#work">My Portofolio</a>
+    </div>
+  </div>
+</header>
+
+<section class="stats" aria-label="Project metrics">
+  <div class="stat"><span class="stat-num">7</span><span class="stat-label">Projects shipped</span></div>
+  <div class="stat"><span class="stat-num">5</span><span class="stat-label">Web apps live</span></div>
+  <div class="stat"><span class="stat-num">16</span><span class="stat-label">Nodes in the flagship pipeline</span></div>
+  <div class="stat"><span class="stat-num">108</span><span class="stat-label">Assertions in the test harness</span></div>
+</section>
+
+<section id="about" class="section">
+  <div class="section-head">
+    <span class="section-idx" aria-hidden="true">01</span>
+    <h2>About</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-copy">
+      <p>I study <strong>Management with a concentration in Finance at Universitas Negeri Malang</strong>, which is where the finance half of "finance engineer" comes from, as AP/AR, reconciliation, and settlement are coursework I actually use.</p>
+      <p>The ticketing half comes from a real place: I was on the ticketing committee of <strong>GKM Odyssey</strong>, a campus concert with around 6,000 attendees. My job was booth duty and typing ticket sales into a spreadsheet by hand. It worked, but I watched the same errors happen twice a day, a code typed wrong, a count duplicated, a reconciliation that only agreed at midnight. That experience is the reason every workflow below treats duplicate codes as the main enemy.</p>
+      <p>The automation itself came after, on my own time: I rebuilt that manual process as n8n pipelines to understand what a structured version would look like. They are personal projects, exploration, not systems the committee runs, but they are built against the real failure modes I saw at the booth.</p>
+      <p>Earlier still, in high school, I ran a <strong>Growtopia reselling</strong> operation that peaked at Rp15M/month in revenue. I shut it down on purpose when margins thinned and risk grew, my first lesson in reading unit economics, and why I stopped rather than lost.</p>
+    </div>
+    <ul class="skill-list">
+      <li><span>Orchestration</span><b>n8n · webhook &amp; scheduled flows</b></li>
+      <li><span>Backend</span><b>FastAPI · Python</b></li>
+      <li><span>Data matching</span><b>rapidfuzz · bucket indexing</b></li>
+      <li><span>Integrations</span><b>Telegram · Notion · Google Sheets</b></li>
+      <li><span>Finance ops</span><b>AP/AR · bank reconciliation · settlement</b></li>
+      <li><span>Infra</span><b>Docker · cloudflared · launchd</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION BARU: INTERACTIVE 3D SHOWCASE (ThreeUI Style) -->
+<!-- REMOVED: Section 3D (Request: Kurang bagus) -->
+
+<section id="work" class="section">
+  <div class="section-head">
+    <span class="section-idx" aria-hidden="true">02</span>
+    <h2>Portofolio</h2>
+    <p class="section-sub">Eksplorasi project automation, full-stack web development, sertifikat, dan tech stack yang saya kuasai.</p>
+  </div>
+
+  <!-- Tab Filter ala Eka Wahyu -->
+  <div class="portfolio-tabs" style="display:flex;gap:0.75rem;margin-bottom:2rem;flex-wrap:wrap;">
+    <button class="btn btn-primary pf-tab active" data-target="projects" style="padding:0.5rem 1.2rem;font-size:0.85rem;">Projects</button>
+    <button class="btn btn-ghost pf-tab" data-target="certificates" style="padding:0.5rem 1.2rem;font-size:0.85rem;">Certificates</button>
+    <button class="btn btn-ghost pf-tab" data-target="stack" style="padding:0.5rem 1.2rem;font-size:0.85rem;">Tech Stack</button>
+  </div>
+
+  <!-- Tab Content: Projects -->
+  <div class="pf-pane active" id="pane-projects">
+    <div id="project-list" class="project-stack"></div>
+  </div>
+
+  <!-- Tab Content: Certificates -->
+  <div class="pf-pane" id="pane-certificates" style="display:none;">
+    <div class="project-stack" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.5rem;">
+      <article class="card cert-card" style="cursor:pointer;padding:1rem;" onclick="window.open('assets/img/cert-sm.jpg','_blank')">
+        <div style="aspect-ratio:16/10;background:#0f172a;border-radius:8px;overflow:hidden;margin-bottom:0.75rem;border:1px solid rgba(255,255,255,0.08);">
+          <img src="assets/img/cert-sm.jpg" alt="Certificate GKM Odyssey" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <h3 style="font-size:0.95rem;margin-bottom:0.3rem;color:#fff;">Panitia Ticketing · GKM Odyssey</h3>
+        <p style="font-size:0.78rem;color:#94A3B8;">Campus concert, ±6,000 attendees. Booth duty and manual ticket-data validation.</p>
+        <span class="badge" style="margin-top:0.6rem;display:inline-block;font-size:0.65rem;">Verified Certificate</span>
+      </article>
+    </div>
+  </div>
+
+  <!-- Tab Content: Tech Stack -->
+  <div class="pf-pane" id="pane-stack" style="display:none;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem;">
+      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <h4 style="color:#fff;font-size:0.95rem;margin-bottom:0.2rem;">React / Vite</h4>
+        <span style="font-size:0.75rem;color:#22C55E;">Frontend UI</span>
+      </div>
+      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <h4 style="color:#fff;font-size:0.95rem;margin-bottom:0.2rem;">Python / FastAPI</h4>
+        <span style="font-size:0.75rem;color:#22C55E;">Backend API</span>
+      </div>
+      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <h4 style="color:#fff;font-size:0.95rem;margin-bottom:0.2rem;">n8n / Node.js</h4>
+        <span style="font-size:0.75rem;color:#22C55E;">Automation</span>
+      </div>
+      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <h4 style="color:#fff;font-size:0.95rem;margin-bottom:0.2rem;">PostgreSQL</h4>
+        <span style="font-size:0.75rem;color:#22C55E;">Database</span>
+      </div>
+      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <h4 style="color:#fff;font-size:0.95rem;margin-bottom:0.2rem;">Docker</h4>
+        <span style="font-size:0.75rem;color:#22C55E;">DevOps / Infra</span>
+      </div>
+      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
+        <h4 style="color:#fff;font-size:0.95rem;margin-bottom:0.2rem;">Tailwind CSS</h4>
+        <span style="font-size:0.75rem;color:#22C55E;">Styling</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap" class="section">
+  <div class="section-head">
+    <span class="section-idx" aria-hidden="true">03</span>
+    <h2>Roadmap</h2>
+    <p class="section-sub">Beyond automation, I am currently exploring full-stack web development and creative interface design. Here is what is on the desk.</p>
+  </div>
+  <div class="project-stack">
+    <article class="card">
+      <h3>Modern SaaS Landing Page</h3>
+      <p>A high-conversion landing page design focused on SaaS products, using Framer Motion for scroll-triggered animations and glassmorphism UI.</p>
+      <span class="badge">React</span><span class="badge">Vite</span><span class="badge">Framer Motion</span>
+    </article>
+    <article class="card">
+      <h3>AI Agent & Autonomous Workflow</h3>
+      <p>Eksplorasi agen otonom untuk otomatisasi riset dan operasi keuangan skala enterprise.</p>
+    </article>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="contact-card">
+    <span class="section-idx" aria-hidden="true">04</span>
+    <h2>Let's build something</h2>
+    <p>Whether it is a manual process to automate or a web idea to build, I would like to hear it.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:hasbiridwan57@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://wa.me/6285777973212" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="comments" class="section">
+  <div class="contact-card" style="text-align:left;">
+    <span class="section-idx">05</span>
+    <h2>Komentar &amp; Pesan</h2>
+    <p style="margin-bottom:1.5rem;">Tinggalkan jejak, kritik, atau sapaan di sini!</p>
+    
+    <form id="comment-form" style="display:grid;gap:1rem;margin-bottom:2rem;">
+      <div>
+        <input type="text" id="comm-name" placeholder="Nama kamu" required style="width:100%;padding:0.75rem 1rem;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-family:inherit;">
+      </div>
+      <div>
+        <textarea id="comm-text" placeholder="Tulis komentar kamu di sini..." rows="3" required style="width:100%;padding:0.75rem 1rem;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;font-family:inherit;resize:vertical;"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="justify-self:start;">Kirim Komentar</button>
+    </form>
+
+    <div id="comment-list" style="display:grid;gap:1rem;max-height:350px;overflow-y:auto;padding-right:0.5rem;">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© <span id="year">2026</span> Hasbi Ridwan · <a href="mailto:hasbiridwan57@gmail.com">hasbiridwan57@gmail.com</a> · <a href="https://wa.me/6285777973212" rel="noopener">WhatsApp</a> · Built with n8n, FastAPI &amp; a lot of duplicate checks</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="assets/js/vendor/lenis.min.js"></script>
+<script src="assets/js/intro-fx.js"></script>
+<script src="assets/js/workflows.js"></script>
+<script src="assets/js/comments.js"></script>
+<script src="assets/js/main.js?v=1791173513"></script>
+</body>
+</html>
