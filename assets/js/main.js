@@ -360,7 +360,7 @@ function renderProjects() {
         <rect class="tx-packet" x="0.7" y="0.7" width="98.6" height="98.6" rx="5.5" ry="4.5" />
       </svg>
       ${p.kind === "web"
-        ? `<div class="web-shot"><img src="${p.shot}" alt="Screenshot ${p.title}"></div>`
+        ? `<div class="web-shot"><img src="${p.shot}" alt="Screenshot ${p.title}" width="1200" height="750" loading="lazy" decoding="async"></div>`
         : workflowStripHTML(p.nodes, false)}
       <div class="card-top">
         <h3>${p.title}</h3>
@@ -396,7 +396,7 @@ function renderProjects() {
                ↗ Buka live (${p.live.replace("https://","")})
              </a>
              <div class="web-shot" style="margin-bottom:1.5rem;">
-               <img src="${p.shot}" alt="Screenshot ${p.title}" style="width:100%;border-radius:10px;">
+               <img src="${p.shot}" alt="Screenshot ${p.title}" width="1200" height="750" loading="lazy" decoding="async" style="width:100%;border-radius:10px;">
              </div>
              ${p.features ? `<div class="card-flow" style="margin-bottom:1.5rem;">
                <span class="flow-label" aria-hidden="true">fitur</span>
@@ -489,139 +489,6 @@ function initStars() {
   });
 }
 
-/* Profile node-orbit: the photo is the hub of a small automation diagram.
-   Hub→node edges with travelling particles, a ring of connected nodes.
-   Hover raises energy. Activates only when the photo loads;
-   reduced motion gets one static frame. */
-function initOrbit() {
-  const wrap = document.getElementById("profile-wrap");
-  const img = document.getElementById("profile-photo");
-  const canvas = document.getElementById("orbit");
-  if (!wrap || !img || !canvas) return;
-
-  function activate() {
-    if (img.classList.contains("is-missing")) return;
-    canvas.style.opacity = "1";
-    build();
-  }
-  img.addEventListener("load", activate);
-  if (img.complete && img.naturalWidth > 0) activate();
-
-  function build() {
-    const ctx = canvas.getContext("2d");
-    let nodes = [], raf = null, t = 0, energy = 0.35, w = 0, h = 0;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const N = 11;
-
-    function size() {
-      const r = wrap.getBoundingClientRect();
-      w = r.width; h = r.height;
-      canvas.width = w * dpr; canvas.height = h * dpr;
-      canvas.style.width = w + "px"; canvas.style.height = h + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      nodes = Array.from({ length: N }, (_, i) => ({
-        a: (i / N) * Math.PI * 2 + Math.random() * 0.35,
-        rx: w * 0.46, ry: h * 0.44,
-        wob: Math.random() * 0.5 + 0.5,
-        ws: Math.random() * 0.6 + 0.3,
-        phase: Math.random() * Math.PI * 2,
-        r: Math.random() * 2.4 + 2,
-        accent: i % 4 === 0
-      }));
-    }
-
-    function pos(n, time) {
-      const a = n.a + Math.sin(time * 0.11 * n.ws + n.phase) * 0.06;
-      const rx = n.rx * (1 + Math.sin(time * 0.07 * n.ws + n.phase) * 0.04 * n.wob);
-      const ry = n.ry * (1 + Math.cos(time * 0.09 * n.ws + n.phase) * 0.05 * n.wob);
-      return { x: w / 2 + Math.cos(a) * rx, y: h / 2 + Math.sin(a) * ry };
-    }
-
-    function draw() {
-      t += 0.016;
-      ctx.clearRect(0, 0, w, h);
-      const cx = w / 2, cy = h / 2;
-      const pts = nodes.map(n => pos(n, t));
-
-      for (let i = 0; i < nodes.length; i++) {
-        const b = pts[i];
-        const pairs = [[{ x: cx, y: cy }, b, true], [b, pts[(i + 1) % nodes.length], false]];
-        for (const [a, c, isHub] of pairs) {
-          ctx.strokeStyle = isHub ? hubGrad : spokeGrad;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(c.x, c.y);
-          ctx.stroke();
-
-          if (isHub) {
-            const k = (t * 0.25 + (i % 5) / 5) % 1;
-            const px = a.x + (c.x - a.x) * k;
-            const py = a.y + (c.y - a.y) * k;
-            ctx.globalAlpha = 0.5 * energy + 0.15;
-            ctx.fillStyle = "#22C55E";
-            ctx.beginPath();
-            ctx.arc(px, py, 1.6, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.globalAlpha = 1;
-          }
-        }
-      }
-
-      pts.forEach((p, i) => {
-        const n = nodes[i];
-        ctx.globalAlpha = 0.85;
-        ctx.fillStyle = n.accent ? "#22C55E" : "#CBD5E1";
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, n.r, 0, Math.PI * 2);
-        ctx.fill();
-        if (n.accent) {
-          ctx.globalAlpha = 0.25 + Math.sin(t * 2 + i) * 0.12;
-          ctx.strokeStyle = "#22C55E";
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, n.r + 4 + Math.sin(t * 2 + i) * 2, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-        ctx.globalAlpha = 1;
-      });
-
-      raf = requestAnimationFrame(draw);
-    }
-
-    function start() { if (!raf) raf = requestAnimationFrame(draw); }
-    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
-
-    let hubGrad, spokeGrad;
-    function grads() {
-      hubGrad = ctx.createLinearGradient(w/2, h/2, w*0.9, h*0.9);
-      hubGrad.addColorStop(0, "rgba(34,197,94,0.38)");
-      hubGrad.addColorStop(1, "rgba(148,163,184,0.19)");
-      spokeGrad = ctx.createLinearGradient(0, 0, w, h);
-      spokeGrad.addColorStop(0, "rgba(34,197,94,0.12)");
-      spokeGrad.addColorStop(1, "rgba(148,163,184,0.08)");
-    }
-    grads();
-
-    /* Pause saat orbit di luar viewport — menggambar yang tak terlihat = murni buang CPU */
-    let inView = true;
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([e]) => {
-        inView = e.isIntersecting;
-        inView ? start() : stop();
-      }, { rootMargin: "120px" }).observe(wrap);
-    }
-
-    size();
-    wrap.addEventListener("mouseenter", () => { energy = 1; });
-    wrap.addEventListener("mouseleave", () => { energy = 0.35; });
-
-    if (REDUCED) { draw(); stop(); return; }
-    start();
-    window.addEventListener("resize", () => { size(); grads(); });
-    document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
-  }
-}
-
 /* Scroll reveal — GSAP ScrollTrigger staggered slide-in (Eka standard).
    Tiap grup kartu masuk berurutan (stagger 0.1s), trigger saat 20% terlihat,
    easing power2.out ≈ cubic-bezier(0.4, 0, 0.2, 1). Fallback ke CSS kalau
@@ -703,7 +570,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
 renderProjects();
 renderFlow();
 initStars();
-initOrbit();
 initReveal();
 initNav();
 initCv();
