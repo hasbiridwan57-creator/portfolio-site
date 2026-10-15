@@ -10,16 +10,19 @@ const projects = [
     title: "Wealth & Portfolio Risk Management Terminal",
     live: "https://finance-dashboard-hasbi.vercel.app",
     shot: "assets/img/finance-hero.png",
-    tech: ["Next.js App Router", "Supabase", "TypeScript", "Tailwind CSS", "Recharts", "Quantitative Risk Engine"],
-    problem: "Terminal kuantitatif dan manajemen risiko portofolio kelas institusi untuk tracking net worth, simulasi stress-test pasar, portofolio drift rebalancing, runway likuiditas, dan arus kas multi-aset.",
+    tech: ["Next.js App Router", "Supabase", "TypeScript", "Tailwind CSS", "Recharts", "16 Quant Engine"],
+    problem: "Terminal kuantitatif dan manajemen risiko portofolio kelas institusi untuk tracking net worth, simulasi stress-test pasar, portofolio drift rebalancing, runway likuiditas, arus kas multi-aset, dan jurnal eksekusi trading.",
     features: [
-      "<b>Quantitative Risk & Ratios</b> — Analisis rasio likuiditas runway (4 tier), debt-to-asset ratio, savings rate, dan passive income coverage.",
-      "<b>Stress Test Engine</b> — Simulasi kejatuhan pasar (Moderate Correction, 2008-COVID, Crypto Winter) terhadap total net worth dan portofolio.",
+      "<b>16 Quantitative Engines</b> — Rasio likuiditas runway (4 tier), debt-to-asset, savings rate, passive income coverage, HHI konsentrasi, CAPM Alpha, Sharpe Ratio, hingga engine pajak & fee broker Indonesia (IDX/Kripto/Emas).",
+      "<b>Stress Test Engine</b> — Simulasi kejatuhan pasar (Market Crash -30%, Crypto Winter -40%, Stagflation) terhadap net worth & portofolio.",
       "<b>Rebalancing & Top-Up Engine</b> — Hitung portfolio drift terhadap alokasi target dan rekomendasi alokasi fresh cash secara presisi.",
-      "<b>Multi-Asset & Live Feed</b> — Tracking saham, kripto, reksa dana, obligasi, dan emas fisik dengan auto-fetch harga live COMEX & Yahoo Finance."
+      "<b>Interactive Smart Money Trading Journal</b> — CRUD eksekusi trading dengan auto-calculate directional PnL (LONG/SHORT), Win Rate, Profit Factor, Expectancy, dan Max Drawdown.",
+      "<b>Multi-Asset & Live Feed</b> — Tracking saham IDX, kripto, reksa dana, obligasi ritel, dan emas fisik dengan auto-fetch harga live COMEX & Yahoo Finance.",
+      "<b>Export IPS Report (PDF)</b> — Cetak laporan eksekutif sekali klik dengan print stylesheet khusus."
     ],
     tests: [
-      "Responsive layout multi-tab (Ringkasan, Arus Kas, Portofolio, Anggaran, Transaksi)",
+      "5 gerbang verifikasi lulus (tsc, quant tests, engine proof, lint, build) — 0 error, 0 warning",
+      "16 fungsi engine terverifikasi dengan pembuktian matematika eksak",
       "Deploy sukses ke Vercel production"
     ],
     status: "Live · Vercel"
