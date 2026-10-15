@@ -1,4 +1,5 @@
-// ── Persistent Comments via Netlify Function + Blobs (/api/comments) ──
+// ── Persistent Comments via Vercel Blob (/api/comments) ──
+// Backend: api/comments.js (Vercel serverless function + Vercel Blob store).
 function initComments() {
   const form = document.getElementById("comment-form");
   const list = document.getElementById("comment-list");

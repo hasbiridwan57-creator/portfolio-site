@@ -696,7 +696,7 @@ function initCv() {
     .catch(() => {});
 }
 
-/* Form komentar ditangani assets/js/comments.js (Netlify Blobs via /api/comments) */
+/* Form komentar ditangani assets/js/comments.js (Vercel Blob via /api/comments) */
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
