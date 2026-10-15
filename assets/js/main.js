@@ -121,16 +121,16 @@ const projects = [
     key: "finance-dashboard",
     kind: "web",
     pinned: true,
-    title: "Personal Finance Dashboard",
+    title: "Wealth & Portfolio Risk Management Terminal",
     live: "https://finance-dashboard-hasbi.vercel.app",
     shot: "assets/img/finance-hero.png",
-    tech: ["Next.js App Router", "Supabase", "TypeScript", "Tailwind CSS", "Recharts"],
-    problem: "Dashboard keuangan pribadi komprehensif untuk tracking net worth, arus kas bulanan, alokasi aset, kepemilikan instrumen investasi, dan progress anggaran dalam satu layar.",
+    tech: ["Next.js App Router", "Supabase", "TypeScript", "Tailwind CSS", "Recharts", "Quantitative Risk Engine"],
+    problem: "Terminal kuantitatif dan manajemen risiko portofolio kelas institusi untuk tracking net worth, simulasi stress-test pasar, portofolio drift rebalancing, runway likuiditas, dan arus kas multi-aset.",
     features: [
-      "<b>Ringkasan Net Worth</b> — Kalkulasi aset vs utang, kas likuid, investasi, dan rasio kesehatan keuangan.",
-      "<b>Arus Kas & Pengeluaran</b> — Grafik bulanan pemasukan vs pengeluaran dan breakdown kategori pengeluaran.",
-      "<b>Portofolio Investasi</b> — Alokasi kelas aset dan tracking posisi instrumen dengan harga real-time.",
-      "<b>Multi-mode data</b> — Mode lokal tersimpan di browser untuk akses cepat, dengan opsi login Supabase untuk sinkronisasi permanen."
+      "<b>Quantitative Risk & Ratios</b> — Analisis rasio likuiditas runway (4 tier), debt-to-asset ratio, savings rate, dan passive income coverage.",
+      "<b>Stress Test Engine</b> — Simulasi kejatuhan pasar (Moderate Correction, 2008-COVID, Crypto Winter) terhadap total net worth dan portofolio.",
+      "<b>Rebalancing & Top-Up Engine</b> — Hitung portfolio drift terhadap alokasi target dan rekomendasi alokasi fresh cash secara presisi.",
+      "<b>Multi-Asset & Live Feed</b> — Tracking saham, kripto, reksa dana, obligasi, dan emas fisik dengan auto-fetch harga live COMEX & Yahoo Finance."
     ],
     tests: [
       "Responsive layout multi-tab (Ringkasan, Arus Kas, Portofolio, Anggaran, Transaksi)",
