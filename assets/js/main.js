@@ -4,6 +4,27 @@
 
 const projects = [
   {
+    key: "finance-dashboard",
+    kind: "web",
+    pinned: true,
+    title: "Wealth & Portfolio Risk Management Terminal",
+    live: "https://finance-dashboard-hasbi.vercel.app",
+    shot: "assets/img/finance-hero.png",
+    tech: ["Next.js App Router", "Supabase", "TypeScript", "Tailwind CSS", "Recharts", "Quantitative Risk Engine"],
+    problem: "Terminal kuantitatif dan manajemen risiko portofolio kelas institusi untuk tracking net worth, simulasi stress-test pasar, portofolio drift rebalancing, runway likuiditas, dan arus kas multi-aset.",
+    features: [
+      "<b>Quantitative Risk & Ratios</b> — Analisis rasio likuiditas runway (4 tier), debt-to-asset ratio, savings rate, dan passive income coverage.",
+      "<b>Stress Test Engine</b> — Simulasi kejatuhan pasar (Moderate Correction, 2008-COVID, Crypto Winter) terhadap total net worth dan portofolio.",
+      "<b>Rebalancing & Top-Up Engine</b> — Hitung portfolio drift terhadap alokasi target dan rekomendasi alokasi fresh cash secara presisi.",
+      "<b>Multi-Asset & Live Feed</b> — Tracking saham, kripto, reksa dana, obligasi, dan emas fisik dengan auto-fetch harga live COMEX & Yahoo Finance."
+    ],
+    tests: [
+      "Responsive layout multi-tab (Ringkasan, Arus Kas, Portofolio, Anggaran, Transaksi)",
+      "Deploy sukses ke Vercel production"
+    ],
+    status: "Live · Vercel"
+  },
+  {
     key: "veritaris",
     kind: "web",
     pinned: true,
@@ -117,27 +138,7 @@ const projects = [
     ],
     status: "Live · Netlify"
   },
-  {
-    key: "finance-dashboard",
-    kind: "web",
-    pinned: true,
-    title: "Wealth & Portfolio Risk Management Terminal",
-    live: "https://finance-dashboard-hasbi.vercel.app",
-    shot: "assets/img/finance-hero.png",
-    tech: ["Next.js App Router", "Supabase", "TypeScript", "Tailwind CSS", "Recharts", "Quantitative Risk Engine"],
-    problem: "Terminal kuantitatif dan manajemen risiko portofolio kelas institusi untuk tracking net worth, simulasi stress-test pasar, portofolio drift rebalancing, runway likuiditas, dan arus kas multi-aset.",
-    features: [
-      "<b>Quantitative Risk & Ratios</b> — Analisis rasio likuiditas runway (4 tier), debt-to-asset ratio, savings rate, dan passive income coverage.",
-      "<b>Stress Test Engine</b> — Simulasi kejatuhan pasar (Moderate Correction, 2008-COVID, Crypto Winter) terhadap total net worth dan portofolio.",
-      "<b>Rebalancing & Top-Up Engine</b> — Hitung portfolio drift terhadap alokasi target dan rekomendasi alokasi fresh cash secara presisi.",
-      "<b>Multi-Asset & Live Feed</b> — Tracking saham, kripto, reksa dana, obligasi, dan emas fisik dengan auto-fetch harga live COMEX & Yahoo Finance."
-    ],
-    tests: [
-      "Responsive layout multi-tab (Ringkasan, Arus Kas, Portofolio, Anggaran, Transaksi)",
-      "Deploy sukses ke Vercel production"
-    ],
-    status: "Live · Vercel"
-  },
+
   
   
   {
