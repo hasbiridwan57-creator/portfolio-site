@@ -4,6 +4,44 @@
 
 const projects = [
   {
+    key: "idx-quant",
+    kind: "repo",
+    pinned: true,
+    title: "IDX-Quant Terminal — Audited Equity Research Platform",
+    live: "https://github.com/hasbiridwan57-creator/idx-quant-terminal",
+    shot: "assets/img/idxq-hero.png",
+    gallery: [
+      "assets/img/idxq-2-dupont.png",
+      "assets/img/idxq-3-valuation.png",
+      "assets/img/idxq-4-screener.png",
+      "assets/img/idxq-5-peer-matrix.png",
+      "assets/img/idxq-6-quant-risk.png",
+      "assets/img/idxq-7-fixed-income.png",
+      "assets/img/idxq-8-research-paper.png"
+    ],
+    tech: ["Python", "FastAPI", "PostgreSQL", "Jinja", "XBRL BEI", "pandas"],
+    problem: "Screener saham Indonesia yang mengisi sel kosong dengan N/A, bukan angka karangan. Semua data fundamental berasal dari laporan keuangan audited XBRL yang dipublikasikan BEI — 937 emiten, 4.185 filing 2021–2025. Tidak ada satu pun angka dummy di dalamnya.",
+    features: [
+      "<b>Zero-fake policy</b> — setiap angka bertanda provenance: REPORTED (dilaporkan emiten), MARKET (dari harga), COMPUTED (hasil engine), PROXY (perkiraan, selalu ditandai), atau N/A (tidak ada, tidak ditebak).",
+      "<b>DuPont 3-tingkat + waterfall YoY</b> — ROE diurai menjadi margin, perputaran aset, dan pengungkit, dengan dekomposisi logaritmik aditif kontribusi tiap faktor terhadap perubahan ROE.",
+      "<b>Valuasi per jenis bisnis</b> — DCF dengan WACC per emiten (beta regresi return harian vs IHSG 5 tahun) untuk non-bank; Justified PBV (ROE−g)/(Ke−g) untuk bank. Bank dan non-bank tidak dipaksa memakai rumus yang sama.",
+      "<b>Screener 937 emiten</b> — dihitung dari engine yang sama dengan halaman per emiten, sehingga nilai wajar tidak pernah berbeda antar jalur.",
+      "<b>Sanity gate</b> — nilai wajar di luar rentang 0,25×–4× harga pasar ditolak dan ditampilkan N/A, karena itu tanda asumsi rusak, bukan peluang.",
+      "<b>Ekspor PDF &amp; Excel</b> — laporan 5 tahun dengan tabel, rasio, valuasi, dan catatan metodologi."
+    ],
+    tests: [
+      "<b>88 test otomatis lulus</b> — termasuk 3 test regresi yang menjaga nilai wajar bank di screener tetap identik dengan halaman per emiten",
+      "Rekonsiliasi identitas DuPont terverifikasi (NPM × AT × EM = ROE, selisih 2,78e-17)",
+      "Klon bersih diuji: dari nol, 4.173 filing tersinkron dan screener 937 baris tampil dalam 2,2 detik",
+      "Performa: screener 465 detik → 28 detik (3.263 query database → 98)"
+    ],
+    notes: [
+      "Repo publik, tidak ada demo hosting — dijalankan lokal dalam tiga perintah",
+      "Data harga harian tidak disertakan (1,15 juta baris, ~157 MB); skrip backfill yfinance disediakan"
+    ],
+    status: "Open source · GitHub"
+  },
+  {
     key: "finance-dashboard",
     kind: "web",
     pinned: true,
@@ -359,17 +397,17 @@ function renderProjects() {
         <rect class="tx-flow" x="0.7" y="0.7" width="98.6" height="98.6" rx="5.5" ry="4.5" />
         <rect class="tx-packet" x="0.7" y="0.7" width="98.6" height="98.6" rx="5.5" ry="4.5" />
       </svg>
-      ${p.kind === "web"
-        ? `<div class="web-shot"><img src="${p.shot}" alt="Screenshot ${p.title}" width="1200" height="750" loading="lazy" decoding="async"></div>`
-        : workflowStripHTML(p.nodes, false)}
+      ${p.kind === "workflow"
+        ? workflowStripHTML(p.nodes, false)
+        : `<div class="web-shot"><img src="${p.shot}" alt="Screenshot ${p.title}" width="1200" height="750" loading="lazy" decoding="async"></div>`}
       <div class="card-top">
         <h3>${p.title}</h3>
-        <span class="card-tag">${p.kind === "web" ? "Live web app" : "Personal project"}</span>
+        <span class="card-tag">${p.kind === "web" ? "Live web app" : p.kind === "repo" ? "Open source" : "Personal project"}</span>
       </div>
       <div class="meta">${p.tech.slice(0, 3).map(t => `<span class="badge">${t}</span>`).join("")}
         ${p.tech.length > 3 ? `<span class="badge">+${p.tech.length - 3} more</span>` : ""}
       </div>
-      <button class="card-toggle">${p.kind === "web" ? "Details & live link" : "Details"}</button>
+      <button class="card-toggle">${p.kind === "web" ? "Details & live link" : p.kind === "repo" ? "Details & source code" : "Details"}</button>
     </article>
   `).join("");
 
@@ -388,7 +426,41 @@ function renderProjects() {
       modalContent.innerHTML = `
         <h2 style="margin-bottom:1.5rem;">${p.title}</h2>
         ${p.problem ? `<p style="font-size:0.95rem;line-height:1.6;color:#cbd5e1;margin-bottom:1.5rem;">${p.problem}</p>` : ""}
-        ${p.kind === "web"
+        ${p.kind === "repo"
+          ? `<a href="${p.live}" target="_blank" rel="noopener noreferrer"
+               style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent,#22c55e);color:#06120c;
+                      font-weight:700;padding:0.7rem 1.4rem;border-radius:99px;text-decoration:none;margin-bottom:1.5rem;
+                      box-shadow:0 0 24px rgba(34,197,94,.35);">
+               ↗ View source (github.com)
+             </a>
+             <div class="web-shot" style="margin-bottom:1.5rem;">
+               <img src="${p.shot}" alt="Screenshot ${p.title}" width="1200" height="750" loading="lazy" decoding="async" style="width:100%;border-radius:10px;">
+             </div>
+             ${p.features ? `<div class="card-flow" style="margin-bottom:1.5rem;">
+               <span class="flow-label" aria-hidden="true">fitur</span>
+               <ul style="margin:0;padding-left:1.5rem;display:grid;gap:0.6rem;">
+                 ${p.features.map(f => `<li style="font-size:0.9rem;line-height:1.55;color:#cbd5e1;">${f}</li>`).join("")}
+               </ul>
+             </div>` : ""}
+             ${p.tests ? `<div class="card-notes" style="background:rgba(34,197,94,0.1);padding:1rem;border-radius:8px;margin-bottom:1.5rem;">
+               <span class="flow-label" aria-hidden="true">terverifikasi</span>
+               <ul style="margin:0.5rem 0 0;padding-left:1.5rem;display:grid;gap:0.4rem;">
+                 ${p.tests.map(t => `<li style="font-size:0.85rem;color:#86efac;">${t}</li>`).join("")}
+               </ul>
+             </div>` : ""}
+             ${p.notes ? `<div class="card-flow" style="margin-bottom:1.5rem;">
+               <span class="flow-label" aria-hidden="true">catatan</span>
+               <ul style="margin:0;padding-left:1.5rem;display:grid;gap:0.5rem;">
+                 ${p.notes.map(n => `<li style="font-size:0.85rem;line-height:1.5;color:#94a3b8;">${n}</li>`).join("")}
+               </ul>
+             </div>` : ""}
+             ${p.gallery ? `<div class="card-flow">
+               <span class="flow-label" aria-hidden="true">tangkapan layar</span>
+               <div style="display:grid;gap:1rem;margin-top:0.75rem;">
+                 ${p.gallery.map(g => `<img src="${g}" alt="Screenshot ${p.title}" loading="lazy" decoding="async" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">`).join("")}
+               </div>
+             </div>` : ""}`
+          : p.kind === "web"
           ? `<a href="${p.live}" target="_blank" rel="noopener noreferrer"
                style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent,#22c55e);color:#06120c;
                       font-weight:700;padding:0.7rem 1.4rem;border-radius:99px;text-decoration:none;margin-bottom:1.5rem;
