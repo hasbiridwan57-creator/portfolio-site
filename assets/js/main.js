@@ -179,9 +179,41 @@ const projects = [
     ],
     status: "Live · Netlify"
   },
+  {
+    key: "mini-erp",
+    kind: "web",
+    pinned: true,
+    title: "Mini ERP — Full-Stack Accounting & Operations (Trading + Jasa)",
+    live: "https://mini-erp-lilac.vercel.app",
+    shot: "assets/img/erp-dashboard.png",
+    gallery: [
+      "assets/img/erp-treasury-reconciliation.png",
+      "assets/img/erp-reports.png",
+      "assets/img/erp-accounting-journals.png",
+      "assets/img/erp-sales-invoices.png"
+    ],
+    tech: ["Next.js 16", "Prisma 6", "PostgreSQL (Neon)", "TypeScript", "Tailwind CSS 4", "RBAC 7 role"],
+    problem: "ERP lengkap untuk bisnis trading & jasa di Indonesia, kubangun end-to-end sebagai Senior Software Engineer + Business Analyst. Mencakup kas & bank, akuntansi penuh (AP/AR, jurnal, neraca), SDM, inventory multi-gudang, aset tetap, CRM, sales, purchase, hingga laporan & audit — 23 modul terintegrasi dalam 55 tabel database.",
+    features: [
+      "<b>Full accounting cycle</b> — COA hierarkis, jurnal otomatis dari faktur/pembayaran/mutasi, trial balance, neraca & laba-rugi real-time dari ledger, tutup buku per periode.",
+      "<b>AP/AR lengkap</b> — faktur jual/beli, retur, pelunasan parsial, deposito pelanggan, aging schedule 30/60/90/120 hari.",
+      "<b>Rekonsiliasi bank otomatis</b> — matching 2 arah transaksi buku ↔ mutasi bank, deteksi ganda, dan laporan selisih.",
+      "<b>Pajak & kepatuhan</b> — PPh23 & PPh21 TER otomatis (gross-up, bukti potong siap cetak), PPN keluaran/masukan, siap audit.",
+      "<b>Inventory & fixed assets</b> — transfer stok antar gudang, stock card, stock opname, depresiasi aset tetap otomatis.",
+      "<b>Multi-tenant & RBAC</b> — isolasi data per perusahaan, 7 role berbeda hak akses (Owner, Finance, Sales, Warehouse, dll), audit log lengkap.",
+      "<b>Print-ready dokumen</b> — faktur, surat jalan, PO, bukti kas/bank, slip gaji — CSS print siap PDF."
+    ],
+    tests: [
+      "<b>568 test otomatis lulus</b> (61 file) — vitest, CI GitHub Actions hijau di setiap push.",
+      "CI gate ketat: eslint --max-warnings=0, tsc strict, prisma migrate diff sinkron, health check database.",
+      "Migrasi produksi diterapkan ke Neon PostgreSQL setelah backup pg_dump + precheck orphan FK (26 FK constraint, 0 orphan).",
+      "Deployment production live di Vercel: health endpoint menunjukkan db:up & version match commit."
+    ],
+    status: "Live · Vercel"
+  },
 
   
-  
+
   {
     key: "intake",
     title: "Ticket Intake — Telegram → Notion",
