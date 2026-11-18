@@ -210,46 +210,6 @@ const projects = [
       "Deployment production live di Vercel: health endpoint menunjukkan db:up & version match commit."
     ],
     status: "Live · Vercel"
-  },
-
-  
-
-  {
-    key: "intake",
-    title: "Ticket Intake — Telegram → Notion",
-    tech: ["n8n", "Telegram Bot API", "Notion API", "JavaScript"],
-    nodes: ["Telegram", "n8n", "Notion"],
-    problem: "Booth duty at GKM Odyssey meant typing every sale into a spreadsheet by hand — codes mistyped, counts entered twice, numbers that only agreed at midnight. This bot is my rebuild of that process: a Telegram message in, a validated Notion row out.",
-    flow: [
-      "Telegram trigger — message arrives as <code>KODE, QTY, JENIS</code>",
-      "Parse &amp; validate — codes, quantities, ticket tiers; auto-generate the next code when none is given",
-      "Split batch — a pasted list of rows becomes one item per ticket",
-      "Pre-write gate — query Notion for existing codes before writing anything",
-      "Write to Notion — only codes that passed the gate",
-      "Post-write cleanup — re-query, archive race-condition duplicates (deterministic keeper)",
-      "Reply — per-line confirmation or one summary message"
-    ],
-    notes: [
-      "<code>TIX-30</code>, <code>TIX-030</code> and <code>tix0030</code> are one identity — canonical normalisation",
-      "Parser logic verified by 70+ assertions in a plain Node harness, outside n8n"
-    ],
-    status: "Personal project / self-initiated"
-  },
-  {
-    key: "hub",
-    title: "Finance Operations Hub",
-    tech: ["n8n", "Excel", "JavaScript", "Telegram"],
-    nodes: ["Excel", "n8n", "Report"],
-    problem: "The concert workbook, generalised to an ordinary finance team — five sheets that describe money in and money out, in the formats accountants actually type.",
-    flow: [
-      "Read 5 sheets — Invoices_AP, Expense_Reimbursement, Bank_Statement, Internal_CashBook, Daily_Transactions",
-      "Parse IDR amounts — <code>Rp1.000.000</code>, <code>(500.000)</code> as negative, <code>1.000.000,50</code>",
-      "Parse Indonesian-style dates",
-      "Bank reconciliation via bucket indexing — O(n+m) instead of nested scans",
-      "Flag overdue invoices, claims needing approval, unrecorded charges",
-      "Send one summary to Telegram"
-    ],
-    status: "Personal project / self-initiated"
   }
 ];
 
