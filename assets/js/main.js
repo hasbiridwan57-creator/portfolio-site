@@ -4,6 +4,31 @@
 
 const projects = [
   {
+    key: "finboard",
+    kind: "web",
+    pinned: true,
+    title: "FinBoard — Dashboard Analitik Keuangan dari CSV",
+    live: "https://finboard-tau-seven.vercel.app",
+    shot: "assets/img/finboard-hero.png",
+    tech: ["Next.js 14", "TypeScript", "Tailwind CSS", "Recharts", "Zustand", "ExcelJS"],
+    problem: "Dashboard eksekutif dari file transaksi mentah: ubah CSV menjadi KPI, 5 grafik interaktif, insight, dan tabel — dalam hitungan detik, tanpa server dan tanpa rumus Excel. 100% diproses di browser, data keuangan tidak pernah dikirim ke mana pun.",
+    features: [
+      "<b>Upload & instant dashboard</b> — drag-drop CSV (≤5MB) dengan auto-mapping 8 kolom + fallback modal manual; 4 KPI card dengan delta MoM, 5 grafik Recharts, tabel interaktif (sort/filter/paginasi).",
+      "<b>Insight bisnis otomatis</b> — ringkasan rule-based Bahasa Indonesia: kontributor revenue terbesar, segmen defisit, tren margin, realisasi vs anggaran, dan anomali.",
+      "<b>Laporan Excel (.xlsx) profesional</b> — ekspor 5 worksheet (Ringkasan P&L, Analisis Segmen, Realisasi Budget, Ringkasan USD, Data Transaksi) lengkap dengan grafik asli (line/bar/pie) & conditional formatting.",
+      "<b>Multi-currency</b> — mode IDR/USD dengan kurs yang bisa diatur; seluruh nominal dikonversi konsisten di KPI, grafik, tabel, dan laporan.",
+      "<b>What-If Simulator & Pareto 80/20</b> — simulasi dampak perubahan revenue/expenses terhadap margin, plus analisis Pareto kontributor profit.",
+      "<b>Ekspor serbaguna</b> — PDF siap cetak (print stylesheet), CSV data mentah untuk unggah ulang, dan salin ringkasan ke clipboard."
+    ],
+    tests: [
+      "<b>Gate triple per milestone</b> — TypeScript strict 0 error, ESLint --max-warnings=0, production build bersih.",
+      "<b>Grafik & laporan terverifikasi</b> — PNG chart tersimpan di workbook (xl/media), 0 formula-cell (semua angka hasil hitung langsung), conditional formatting aktif.",
+      "<b>Edge-case teruji</b> — CSV delimiter ';', tanggal campur, kolom wajib hilang (modal mapping muncul), dan dataset 360 transaksi.",
+      "Deploy production live di Vercel."
+    ],
+    status: "Live · Vercel"
+  },
+  {
     key: "idx-quant",
     kind: "repo",
     pinned: true,
