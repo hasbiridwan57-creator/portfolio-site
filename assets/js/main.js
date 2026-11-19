@@ -210,7 +210,7 @@ const projects = [
     pinned: true,
     title: "Mini ERP — Full-Stack Accounting & Operations (Trading + Jasa)",
     live: "https://mini-erp-lilac.vercel.app",
-    shot: "assets/img/erp-dashboard.png",
+    shot: "assets/img/erp-hero-live.png",
     gallery: [
       "assets/img/erp-treasury-reconciliation.png",
       "assets/img/erp-reports.png",
