@@ -91,6 +91,31 @@ const projects = [
     status: "Live · Vercel"
   },
   {
+    key: "reconflow",
+    kind: "web",
+    pinned: true,
+    title: "ReconFlow — Otomasi Rekonsiliasi Bank & Buku",
+    live: "https://reconflow-two.vercel.app",
+    shot: "assets/img/reconflow-hero.png",
+    tech: ["Next.js 15", "Prisma + PostgreSQL", "TypeScript", "Tailwind CSS 4", "Zod", "ExcelJS"],
+    problem: "Rekonsiliasi bank yang biasanya dikerjakan manual di Excel — mencocokkan mutasi rekening koran dengan buku kas/GL baris per baris — dibuat otomatis dan bisa diaudit. Engine mencocokkan tiga tahap, sisa selisih yang wajar (timing difference) dicatat sebagai penyesuaian, dan seluruh jejaknya tersimpan sebagai jurnal double-entry maupun ledger audit. Selisih bank-buku selalu Rp 0 saat rekonsiliasi seimbang.",
+    features: [
+      "<b>Engine pencocokan 3 tahap</b> — exact match, lalu toleransi tanggal &amp; nominal, lalu fuzzy score kemiripan keterangan. Setiap pasangan membawa skor kepercayaan plus alasan (nominal identik, selisih 1 hari, kemiripan deskripsi).",
+      "<b>Jurnal penyesuaian double-entry otomatis</b> — penomoran sendiri, kategori akun COA (jasa giro, biaya admin, PPh final), debit = kredit selalu terjaga. Penyesuaian sisi bank (timing difference) dicatat tanpa jurnal, sesuai praktik akuntansi.",
+      "<b>Unggah CSV maupun Excel</b> — .csv dan .xlsx, deteksi kolom bank/buku otomatis, baris footer disaring, tanggal campur dinormalisasi. Ada 3 skenario demo 1-klik (UMKM, e-commerce, kasus audit).",
+      "<b>Laporan siap audit</b> — ekspor PDF eksekutif (stempel status DRAFT/RECONCILED, 4 kotak KPI) dan Excel multi-sheet dengan kolom status penyesuaian per baris plus ledger audit lengkap.",
+      "<b>Inbox zero triage</b> — antrean item belum cocok dengan rekomendasi otomatis, terapkan massal, dan drawer pencocokan manual yang menjaga aturan arah debit/kredit.",
+      "<b>Isolasi workspace</b> — setiap workspace terpisah lewat cookie pemilik; data satu pengguna tidak bisa diakses pengguna lain (404), tanpa perlu login."
+    ],
+    tests: [
+      "<b>133 test otomatis lulus</b> (14 file) — engine parser, matcher, suggester, jurnal, ekspor PDF/Excel, dan integrasi API",
+      "Zero-drift akuntansi terverifikasi: Selisih = Bank Disesuaikan − Buku Disesuaikan, dan tanda dampak diambil dari kategori akun, bukan arah masuk/keluar",
+      "3 skenario demo seimbang (UMKM, e-commerce, audit) — selisih Rp 0 dan Trial Balance balance saat seluruh sesi selesai",
+      "Deploy production live di Vercel (region Singapura) dengan PostgreSQL Neon"
+    ],
+    status: "Live · Vercel"
+  },
+  {
     key: "veritaris",
     kind: "web",
     pinned: true,
